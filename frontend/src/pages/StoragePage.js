@@ -3,7 +3,7 @@ import { ethers } from "ethers"
 import SimpleStorageArtifact from "../contracts/SimpleStorage.json"
 
 const provider = new ethers.providers.Web3Provider(window.ethereum)
-const SimpleStorage = new ethers.Contract("0x4998bc623fb8bdab43b6aef7d6d3b60accbd30a9", SimpleStorageArtifact.abi, provider)
+const SimpleStorage = new ethers.Contract("0x4ddd596385657e997928c923f3faac5bec5fdfd4", SimpleStorageArtifact.abi, provider)
 
 function MessageForm() {
   const [message, setMessage] = useState("")
@@ -29,6 +29,7 @@ function Message() {
 
   useEffect(async function() {
     const simpleStorage = await SimpleStorage.deployed()
+    console.log()
     setMessage(await simpleStorage.message())
   })
 
